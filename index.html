@@ -14,6 +14,29 @@
 		</style>
 		<script>
 			pontszam = 0;
+			function TalalatLenne(event) {
+				tavolsag = Math.sqrt(
+					Math.pow(event.offsetX - centerX, 2) +
+						Math.pow(event.offsetY - centerY, 2)
+				);
+				console.log(max_pont_id.value);
+
+				if (levonas_id.checked == false) {
+					if (tavolsag < 20) {
+						talalat_lenne_id.value = '6 pont lenne';
+					} else if (tavolsag < 70) {
+						talalat_lenne_id.value = '5 pont lenne';
+					} else if (tavolsag < 120) {
+						talalat_lenne_id.value = '4 pont lenne';
+					} else if (tavolsag < 165) {
+						talalat_lenne_id.value = '3 pont lenne';
+					} else if (tavolsag < 210) {
+						talalat_lenne_id.value = '2 pont lenne';
+					} else if (tavolsag < 260) {
+						talalat_lenne_id.value = '1 pont lenne';
+					}
+				}
+			}
 			function Kattintas(event) {
 				centerX = 260;
 				centerY = 260;
@@ -41,11 +64,10 @@
 				} else {
 					pontszam--;
 				}
-
-				pontszam_id.value = pontszam;
 				if (pontszam > max_pont_id.value) {
 					alert('Nyertél');
 				}
+				pontszam_id.value = pontszam;
 			}
 			function Levonas() {
 				if (levonas_id.checked == true) {
@@ -59,6 +81,10 @@
 			<div class="pontszam">
 				<label for="pontszam">Pontszam:</label>
 				<input type="text" id="pontszam_id" value="0" />
+			</div>
+			<div class="talalat_lenne">
+				<label for="talalat_lenne_id"></label>
+				<input type="text" id="talalat_lenne_id" />
 			</div>
 			<div>
 				<img src="celtabla.png" alt="celtabla" onclick="Kattintas(event)" />
