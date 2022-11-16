@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>celtable</title>
+		<script>
+			pontszam = 0;
+			function Kattintas(event) {
+				centerX = 260;
+				centerY = 260;
+
+				tavolsag = Math.sqrt(
+					Math.pow(event.offsetX - centerX, 2) +
+						Math.pow(event.offsetY - centerY, 2)
+				);
+				if (tavolsag < 20) {
+					pontszam += 30;
+				} else if (tavolsag < 70) {
+					pontszam += 25;
+				} else if (tavolsag < 120) {
+					pontszam += 20;
+				} else if (tavolsag < 165) {
+					pontszam += 15;
+				} else if (tavolsag < 210) {
+					pontszam += 10;
+				} else if (tavolsag < 260) {
+					pontszam += 5;
+				}
+				console.log(pontszam);
+			}
+		</script>
+	</head>
+	<body>
+		<img src="celtabla.png" alt="celtabla" onclick="Kattintas(event)" />
+	</body>
+</html>
