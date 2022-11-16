@@ -22,28 +22,33 @@
 					Math.pow(event.offsetX - centerX, 2) +
 						Math.pow(event.offsetY - centerY, 2)
 				);
+				console.log(max_pont_id.value);
+
 				if (levonas_id.checked == false) {
 					if (tavolsag < 20) {
-						pontszam += 30;
+						pontszam += 6;
 					} else if (tavolsag < 70) {
-						pontszam += 25;
-					} else if (tavolsag < 120) {
-						pontszam += 20;
-					} else if (tavolsag < 165) {
-						pontszam += 15;
-					} else if (tavolsag < 210) {
-						pontszam += 10;
-					} else if (tavolsag < 260) {
 						pontszam += 5;
+					} else if (tavolsag < 120) {
+						pontszam += 4;
+					} else if (tavolsag < 165) {
+						pontszam += 3;
+					} else if (tavolsag < 210) {
+						pontszam += 2;
+					} else if (tavolsag < 260) {
+						pontszam += 1;
 					}
 				} else {
 					pontszam--;
 				}
 
 				pontszam_id.value = pontszam;
+				if (pontszam > max_pont_id.value) {
+					alert('Nyertél');
+				}
 			}
 			function Levonas() {
-				if ((pontszam_id.checked = true)) {
+				if (levonas_id.checked == true) {
 					alert('Ha bevagyok x-el es igy kattintasz akkor -1 pont');
 				}
 			}
@@ -66,6 +71,14 @@
 					onchange="Levonas()"
 				/>
 				<label for="levonas_id"> Levonas</label>
+			</div>
+			<div class="max_pont">
+				<label for="max_pont_id">Maximális pont</label>
+				<select name="max_select" id="max_pont_id">
+					<option value="10">10</option>
+					<option value="20">20</option>
+					<option value="30">30</option>
+				</select>
 			</div>
 		</main>
 	</body>
