@@ -14,6 +14,8 @@
 		</style>
 		<script>
 			pontszam = 0;
+			centerX = 260;
+			centerY = 260;
 			function TalalatLenne(event) {
 				tavolsag = Math.sqrt(
 					Math.pow(event.offsetX - centerX, 2) +
@@ -34,13 +36,12 @@
 						talalat_lenne_id.value = '2 pont lenne';
 					} else if (tavolsag < 260) {
 						talalat_lenne_id.value = '1 pont lenne';
+					} else {
+						talalat_lenne_id.value = '0 pont lenne';
 					}
 				}
 			}
 			function Kattintas(event) {
-				centerX = 260;
-				centerY = 260;
-
 				tavolsag = Math.sqrt(
 					Math.pow(event.offsetX - centerX, 2) +
 						Math.pow(event.offsetY - centerY, 2)
@@ -84,10 +85,15 @@
 			</div>
 			<div class="talalat_lenne">
 				<label for="talalat_lenne_id"></label>
-				<input type="text" id="talalat_lenne_id" />
+				<input type="text" id="talalat_lenne_id" value="0 pont lenne" />
 			</div>
 			<div>
-				<img src="celtabla.png" alt="celtabla" onclick="Kattintas(event)" />
+				<img
+					src="celtabla.png"
+					alt="celtabla"
+					onclick="Kattintas(event)"
+					onmousemove="TalalatLenne(event)"
+				/>
 			</div>
 			<div class="levonas">
 				<input
