@@ -2,6 +2,16 @@
 <html>
 	<head>
 		<title>celtable</title>
+		<style>
+			body {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			main * {
+				margin-bottom: 10px;
+			}
+		</style>
 		<script>
 			pontszam = 0;
 			function Kattintas(event) {
@@ -12,24 +22,51 @@
 					Math.pow(event.offsetX - centerX, 2) +
 						Math.pow(event.offsetY - centerY, 2)
 				);
-				if (tavolsag < 20) {
-					pontszam += 30;
-				} else if (tavolsag < 70) {
-					pontszam += 25;
-				} else if (tavolsag < 120) {
-					pontszam += 20;
-				} else if (tavolsag < 165) {
-					pontszam += 15;
-				} else if (tavolsag < 210) {
-					pontszam += 10;
-				} else if (tavolsag < 260) {
-					pontszam += 5;
+				if (levonas_id.checked == false) {
+					if (tavolsag < 20) {
+						pontszam += 30;
+					} else if (tavolsag < 70) {
+						pontszam += 25;
+					} else if (tavolsag < 120) {
+						pontszam += 20;
+					} else if (tavolsag < 165) {
+						pontszam += 15;
+					} else if (tavolsag < 210) {
+						pontszam += 10;
+					} else if (tavolsag < 260) {
+						pontszam += 5;
+					}
+				} else {
+					pontszam--;
 				}
-				console.log(pontszam);
+
+				pontszam_id.value = pontszam;
+			}
+			function Levonas() {
+				if ((pontszam_id.checked = true)) {
+					alert('Ha bevagyok x-el es igy kattintasz akkor -1 pont');
+				}
 			}
 		</script>
 	</head>
 	<body>
-		<img src="celtabla.png" alt="celtabla" onclick="Kattintas(event)" />
+		<main>
+			<div class="pontszam">
+				<label for="pontszam">Pontszam:</label>
+				<input type="text" id="pontszam_id" value="0" />
+			</div>
+			<div>
+				<img src="celtabla.png" alt="celtabla" onclick="Kattintas(event)" />
+			</div>
+			<div class="levonas">
+				<input
+					type="checkbox"
+					id="levonas_id"
+					name="levonas"
+					onchange="Levonas()"
+				/>
+				<label for="levonas_id"> Levonas</label>
+			</div>
+		</main>
 	</body>
 </html>
